@@ -1,0 +1,16 @@
+{% extends "booksapp/base.html" %}
+
+{% block content %}
+        <div>
+            <img src="{{ book.thumbnail }}" alt="{{ book.thumbnail }}">
+            <img src="{{ book.smallThumbnail }}" alt="{{ book.smallThumbnail }}">
+
+            <h2>Title: {{ book.title }}</h2>
+            <h3>Authors: {{ book.authors }}</h2>
+            <h3>Publish date: {{ book.publishedDate }}</h3>
+            <h3>Pages: {{ book.pageCount }}</h3>
+            <h3>Language: {{ book.language }}</h3>
+            <h3>ISBN-10: {{ book.identifier10 }}</h3>
+            <h3>ISBN-13: {{ book.identifier13 }}</h3>
+        </div>
+{% endblock %}

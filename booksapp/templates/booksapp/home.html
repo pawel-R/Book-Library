@@ -1,0 +1,40 @@
+{% extends "booksapp/base.html" %}
+
+{% block content %}
+    <div>
+        <form mothod="GET" action="{% url 'booksapp:search' %}">
+            <input name="title" value="{{ request.GET.quer1 }}" placeholder="Title...">
+            <input name="authors" value="{{ request.GET.quer2 }}" placeholder="Authors...">
+            <input name="language" value="{{ request.GET.quer3 }}" placeholder="Language...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div>
+        <form action="{% url 'booksapp:book_add' %}">
+            <button>Add new book</button>
+        </form>
+    </div>
+    <div>
+        <form action="{% url 'booksapp:book_import' %}">
+            <button>Search for existance book</button>
+        </form>
+    </div>
+
+    {% for book in books %}
+        <div>
+            <h3><a href="{% url 'booksapp:book_detail' pk=book.pk %}" >Title: {{ book.title }}</a></h3>
+            <h4>Authors: {{ book.authors }}</h4>
+            <h4>Publish date: {{ book.publishedDate }}</h4>
+            <img src="{{ book.thumbnail }}" alt="{{ book.thumbnail }}">
+            <img src="{{ book.smallThumbnail }}" alt="{{ book.smallThumbnail }}">
+            <h3>Pages: {{ book.pageCount }}</h3>
+            <h3>Language: {{ book.language }}</h3>
+            <h3>ISBN-10: {{ book.identifier10 }}</h3>
+            <h3>ISBN-13: {{ book.identifier13 }}</h3>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    {% endfor %}
+{% endblock %}

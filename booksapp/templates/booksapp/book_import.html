@@ -1,0 +1,36 @@
+{% extends "booksapp/base.html" %}
+
+{% block content %}
+    <h2>Import book</h2>
+
+    <form method="POST" action="{% url 'booksapp:book_import' %}">{% csrf_token %}
+        <input name="search1" value="{{ search1 }}" placeholder="search">
+        <button type="submit">Search</button>
+    </form>
+
+    {% for result in all_results %}
+        <div>
+            <img src="{{ result.thumbnail }}" alt="{{ result.thumbnail }}">
+            <img src="{{ result.smallThumbnail }}" alt="{{ result.smallThumbnail }}">
+
+            <h2>Title: {{ result.title }}</h2>
+            <h3>Authors: {{ result.authors }}</h2>
+            <h3>Publish date: {{ result.publishedDate }}</h3>
+            <h3>Pages: {{ result.pageCount }}</h3>
+            <h3>Language: {{ result.language }}</h3>
+            <h3>ISBN-10: {{ result.identifier10 }}</h3>
+            <h3>ISBN-13: {{ result.identifier13 }}</h3>
+            
+            <form method="POST" action="{% url 'booksapp:book_import' %}">{% csrf_token %}
+                <button type="submit" name="add" value="{{ result.id }}" >Add book to Library</button>
+                <input type="hidden" name="search2" value="{{ last }}" ></input>
+            </form>
+
+            <br>
+            <br>
+            <br>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
