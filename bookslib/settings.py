@@ -25,7 +25,7 @@ SECRET_KEY = '7l&6k@o3((hu=thi-=d=#fahlh0@&5j&^v@6kpqj$2f8inl6i8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pawelbooklibraryapp.herokuapp.com']
 
 
 # Application definition
