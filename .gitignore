@@ -1,12 +1,6 @@
 db.sqlite3
 .vscode
-booksapp/biblio.json
-booksapp/biblio2.json
-booksapp/testowy2.py
-booksapp/testowy3.py
-booksapp/testowy4.py
-
-
+.gitignore
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

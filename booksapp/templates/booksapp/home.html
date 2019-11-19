@@ -16,7 +16,16 @@
     </div>
     <div>
         <form action="{% url 'booksapp:book_import' %}">
-            <button>Search for existance book</button>
+            <button>Search for existing books</button>
+        </form>
+    </div>
+    <div>
+        <form action="{% url 'booksapp:api:list' %}">
+            <h3>In REST API use URL</h3>
+            <li>/book/</li>
+            <li>/book/"id"/</li>
+            <li>/book/delete/</li>
+            <button>REST API</button>
         </form>
     </div>
 
@@ -31,6 +40,16 @@
             <h3>Language: {{ book.language }}</h3>
             <h3>ISBN-10: {{ book.identifier10 }}</h3>
             <h3>ISBN-13: {{ book.identifier13 }}</h3>
+            <div>
+                <form action="{% url 'booksapp:book_update' pk=book.pk %}">
+                    <button>Update</button>
+                </form>
+            </div>
+            <div>
+                <form action="{% url 'booksapp:book_delete' pk=book.pk %}">
+                    <button>Delete</button>
+                </form>
+            </div>
             <br>
             <br>
             <br>

@@ -8,4 +8,3 @@ class BookForm(forms.ModelForm):
         fields = "__all__"
 
 
-

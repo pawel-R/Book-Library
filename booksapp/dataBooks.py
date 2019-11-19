@@ -1,11 +1,14 @@
 import requests
 from .models import Book
 
+# This code import and save every book to database from below URL.
 def database():
     response = requests.get("https://www.googleapis.com/books/v1/volumes?q=hobbit")
     data = response.json()
 
+    # In "data" are json data. Try to get only needed keys.
     for book in data["items"]:
+        # Some titles have troublesome letters inside. This encoding ignore this letters.
         title = book["volumeInfo"]["title"].encode(encoding="ascii", errors="ignore").decode("ascii")
         authors = ', '.join(book["volumeInfo"]["authors"])
         publishedDate = book["volumeInfo"]["publishedDate"]
@@ -47,6 +50,6 @@ def database():
                 "thumbnail" : thumbnail,
                 "language" : language
                 }
-
+        # Create and save each book to database.
         create_Database = Book(**data_dict)
         create_Database.save()

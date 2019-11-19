@@ -1,6 +1,7 @@
 import requests
 from .models import Book
 
+# In "books" are json data. Try to get only needed keys.
 def importBook(books):
 
     all_results = []
@@ -8,7 +9,9 @@ def importBook(books):
     for book in books["items"]:
         
         id = book["id"]
+        # Some books hasn't every keys. "try" provide this.
         try:
+            # Some titles have troublesome letters inside. This encoding ignore this letters.
             title = book["volumeInfo"]["title"].encode(encoding="ascii", errors="ignore").decode("ascii")
         except:
             title = ""
@@ -67,15 +70,8 @@ def importBook(books):
                 "language" : language,
                 "id" : id
                 }
-        
+        # Save every search to list.
         all_results.append(data_dict)
 
 
     return all_results
-
-
-def saveImport(data_dict):
-    create_Database = Book(**data_dict)
-    create_Database.save()
-
-        
