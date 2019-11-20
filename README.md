@@ -1,8 +1,8 @@
 # Book Library
 
-Shows list of books in database.
-Search book from Google books and add to database.
-Add own book to database.
+Shows list of books in database.  
+Search book from Google books and add to database.  
+Add own book to database.  
 
 
 ## Technologies:
